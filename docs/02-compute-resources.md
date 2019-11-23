@@ -1,14 +1,14 @@
 # Provisioning Compute Resources
 
-Note: You must have VirtualBox and Vagrant configured at this point
+Note: You must have KVM and Vagrant configured at this point
 
 Download this github repository and cd into the vagrant folder
 
-`git clone https://github.com/mmumshad/kubernetes-the-hard-way.git`
+`git clone https://github.com/evgG/kubernetes-the-hard-way.git`
 
 CD into vagrant directory
 
-`cd kubernetes-the-hard-way\vagrant`
+`cd kubernetes-the-hard-way/vagrant`
 
 Run Vagrant up
 
@@ -52,7 +52,7 @@ There are two ways to SSH into the nodes:
 
 ### 2. SSH Using SSH Client Tools
 
-Use your favourite SSH Terminal tool (putty).
+Use your terminal.
 
 Use the above IP addresses. Username and password based SSH is disabled by default.
 Vagrant generates a private key for each of these VMs. It is placed under the .vagrant folder (in the directory you ran the `vagrant up` command from) at the below path for each VM:
@@ -68,32 +68,17 @@ Vagrant generates a private key for each of these VMs. It is placed under the .v
 - Ensure VMs are assigned the above IP addresses
 - Ensure you can SSH into these VMs using the IP and private keys
 - Ensure the VMs can ping each other
-- Ensure the worker nodes have Docker installed on them. Version: 18.06
+- Ensure the worker nodes have Docker installed on them. Version: 19.03
   > command `sudo docker version`
 
 ## Troubleshooting Tips
 
-If any of the VMs failed to provision, or is not configured correct, delete the vm using the command:
+If any of the VMs failed to provision, or is not configured correct, delete all using the command:
 
-`vagrant destroy <vm>`
+`vagrant destroy -f`
 
 Then reprovision. Only the missing VMs will be re-provisioned
 
 `vagrant up`
 
-
-Sometimes the delete does not delete the folder created for the vm and throws the below error.
-
-VirtualBox error:
-
-    VBoxManage.exe: error: Could not rename the directory 'D:\VirtualBox VMs\ubuntu-bionic-18.04-cloudimg-20190122_1552891552601_76806' to 'D:\VirtualBox VMs\kubernetes-ha-worker-2' to save the settings file (VERR_ALREADY_EXISTS)
-    VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachine, interface IMachine, callee IUnknown
-    VBoxManage.exe: error: Context: "SaveSettings()" at line 3105 of file VBoxManageModifyVM.cpp
-
-In such cases delete the VM, then delete teh VM folder and then re-provision
-
-`vagrant destroy <vm>`
-
-`rmdir "<path-to-vm-folder>\kubernetes-ha-worker-2"`
-
-`vagrant up`
+Next: [Installing the Client Tools](03-client-tools.md)

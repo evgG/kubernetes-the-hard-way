@@ -5,25 +5,22 @@
 8 GB of RAM (Preferebly 16 GB)
 50 GB Disk space
 
-## Virtual Box
+## KVM and utils
 
-Download and Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) on any one of the supported platforms:
-
- - Windows hosts
- - OS X hosts
- - Linux distributions
- - Solaris hosts
+Install on Linux:
+- Qemu-kvm
+- libvirt
+- bridge-utils virtinst
 
 ## Vagrant
 
-Once VirtualBox is installed you may chose to deploy virtual machines manually on it.
-Vagrant provides an easier way to deploy multiple virtual machines on VirtualBox more consistenlty.
+Once KVM is installed and activated you may chose to deploy virtual machines manually on it.
+Vagrant provides an easier way to deploy multiple virtual machines on VirtualBox more consistenlty, but for our purpose Vagrant using for KVM deployment.
 
 Download and Install [Vagrant](https://www.vagrantup.com/) on your platform.
 
-- Windows
-- Debian
-- Centos
-- Linux
-- macOS
-- Arch Linux
+After Vagrant installed and libvirt plugin:
+
+`vagrant plugin install vagrant-libvirt`
+
+Next: [Provisioning Compute Resources](02-compute-resources.md)
