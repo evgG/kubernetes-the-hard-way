@@ -264,4 +264,4 @@ curl  https://192.168.5.30:6443/version -k
 }
 ```
 
-Next: [Bootstrapping the Kubernetes Worker Nodes](09-bootstrapping-kubernetes-workers.md)
+Next: [Configuring kubectl for Remote Access](09-configuring-kubectl.md)

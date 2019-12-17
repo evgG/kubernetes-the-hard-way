@@ -261,4 +261,4 @@ worker-1   NotReady   <none>   51s   v1.16.3
 > Note: It is OK for the worker node to be in a NotReady state.
   That is because we haven't configured Networking yet.
 
-Next: [TLS Bootstrapping Kubernetes Workers](10-tls-bootstrapping-kubernetes-workers.md)
+Next: [TLS Bootstrapping Kubernetes Workers](11-tls-bootstrapping-kubernetes-workers.md)
