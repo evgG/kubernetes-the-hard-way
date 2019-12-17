@@ -245,15 +245,10 @@ EOF
 ## Verification
 
 
-List the registered Kubernetes nodes from the master node:
+List the registered Kubernetes nodes from the host:
 
 ```
-master-1$ kubectl get nodes --kubeconfig admin.kubeconfig
-```
-
-> output
-
-```
+$ kubectl get nodes
 NAME       STATUS     ROLES    AGE   VERSION
 worker-1   NotReady   <none>   51s   v1.16.3
 ```
