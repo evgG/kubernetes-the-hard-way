@@ -381,36 +381,31 @@ EOF
 
 ## Step 9 Approve Server CSR
 
-`kubectl get csr`
-
 ```
+$ kubectl get csr
 NAME        AGE   REQUESTOR                 CONDITION
-csr-mq79f   18m   system:bootstrap:07401b   Approved,Issued
+csr-dwnfq   19s   system:node:worker-2      Pending
+csr-pzxnt   41s   system:bootstrap:07401b   Approved,Issued
 ```
 
 
 Approve
 
-`kubectl certificate approve csr-mq79f
+`kubectl certificate approve csr-dwnfq
 
 Reference: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/#kubectl-approval
 
 ## Verification
 
-List the registered Kubernetes nodes from the master node:
+List the registered Kubernetes nodes from the host:
 
 ```
-master-1$ kubectl get nodes --kubeconfig admin.kubeconfig
-```
-
-> output
-
-```
+$ kubectl get nodes
 NAME       STATUS     ROLES    AGE     VERSION
-worker-1   NotReady   <none>   18h     v1.16.3
-worker-2   NotReady   <none>   6m13s   v1.16.3
-
+worker-1   NotReady   <none>   6h25m   v1.16.3
+worker-2   NotReady   <none>   2m35s   v1.16.3
 ```
+
 Note: It is OK for the worker node to be in a NotReady state. That is because we haven't configured Networking yet.
 
 Next: [Configuring Kubectl](11-configuring-kubectl.md)
