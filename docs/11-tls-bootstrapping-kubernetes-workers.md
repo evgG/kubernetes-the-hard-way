@@ -288,6 +288,7 @@ resolvConf: "/run/systemd/resolve/resolv.conf"
 runtimeRequestTimeout: "15m"
 RotateKubeletServerCertificate: true
 rotateCertificates: true
+serverTLSBootstrap: true
 EOF
 ```
 
@@ -391,7 +392,7 @@ csr-pzxnt   41s   system:bootstrap:07401b   Approved,Issued
 
 Approve
 
-`kubectl certificate approve csr-dwnfq
+`kubectl certificate approve csr-dwnfq`
 
 Reference: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/#kubectl-approval
 

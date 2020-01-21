@@ -7,6 +7,7 @@ apt-get update \
         curl \
         software-properties-common \
         gnupg \
+        conntrack \
     && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
     && add-apt-repository \
         "deb https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \

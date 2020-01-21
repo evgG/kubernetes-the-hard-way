@@ -245,7 +245,7 @@ loadbalancer# sudo service haproxy restart
 Make a HTTP request for the Kubernetes version info:
 
 ```
-curl  https://192.168.5.30:6443/version -k
+curl --cacert ca.crt https://192.168.5.30:6443/version
 ```
 
 > output

@@ -64,6 +64,7 @@ Vagrant.configure("2") do |config|
         node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
         node.vm.network "forwarded_port", guest: 22, host: "#{2710 + i}"
 
+        node.vm.provision "setup-iptables", type: "shell", :path => "debian/switch-to-iptables-legacy.sh"
         node.vm.provision "setup-hosts", :type => "shell", :path => "debian/vagrant/setup-hosts.sh" do |s|
           s.args = ["eth1"]
         end
@@ -84,6 +85,7 @@ Vagrant.configure("2") do |config|
     node.vm.network :private_network, ip: IP_NW + "#{LB_IP_START}"
 	node.vm.network "forwarded_port", guest: 22, host: 2730
 
+    node.vm.provision "setup-iptables", type: "shell", :path => "debian/switch-to-iptables-legacy.sh"
     node.vm.provision "setup-hosts", :type => "shell", :path => "debian/vagrant/setup-hosts.sh" do |s|
       s.args = ["eth1"]
     end
@@ -104,6 +106,7 @@ Vagrant.configure("2") do |config|
         node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
 		node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
 
+        node.vm.provision "setup-iptables", type: "shell", :path => "debian/switch-to-iptables-legacy.sh"
         node.vm.provision "setup-hosts", :type => "shell", :path => "debian/vagrant/setup-hosts.sh" do |s|
           s.args = ["eth1"]
         end

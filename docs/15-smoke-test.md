@@ -125,8 +125,9 @@ kubectl logs $POD_NAME
 > output
 
 ```
-10.32.0.1 - - [20/Mar/2019:10:08:30 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.58.0" "-"
-10.40.0.0 - - [20/Mar/2019:10:08:55 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.58.0" "-"
+10.32.0.1 - - [20/Jan/2020:15:18:27 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.64.0" "-"
+10.40.0.0 - - [20/Jan/2020:15:18:27 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.64.0" "-"
+
 ```
 
 ### Exec
@@ -142,7 +143,7 @@ kubectl exec -ti $POD_NAME -- nginx -v
 > output
 
 ```
-nginx version: nginx/1.15.9
+nginx version: nginx/1.17.7
 ```
 
 Next: [End to End Tests](16-e2e-tests.md)
