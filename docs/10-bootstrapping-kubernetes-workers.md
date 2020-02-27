@@ -101,9 +101,9 @@ Going forward all activities are to be done on the `worker-1` node.
 
 ```
 worker-1$ wget -q --show-progress --https-only --timestamping \
-  https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/linux/amd64/kubectl \
-  https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/linux/amd64/kube-proxy \
-  https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/linux/amd64/kubelet
+  https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kubectl \
+  https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kube-proxy \
+  https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kubelet
 ```
 
 Reference: https://kubernetes.io/docs/setup/release/#node-binaries
@@ -163,8 +163,6 @@ tlsCertFile: "/var/lib/kubelet/${HOSTNAME}.crt"
 tlsPrivateKeyFile: "/var/lib/kubelet/${HOSTNAME}.key"
 EOF
 ```
-
-> The `resolvConf` configuration is used to avoid loops when using CoreDNS for service discovery on systems running `systemd-resolved`.
 
 Create the `kubelet.service` systemd unit file:
 
@@ -250,7 +248,7 @@ List the registered Kubernetes nodes from the host:
 ```
 $ kubectl get nodes
 NAME       STATUS     ROLES    AGE   VERSION
-worker-1   NotReady   <none>   51s   v1.16.3
+worker-1   NotReady   <none>   6s    v1.17.3
 ```
 
 > Note: It is OK for the worker node to be in a NotReady state.
