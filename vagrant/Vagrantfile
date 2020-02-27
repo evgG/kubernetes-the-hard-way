@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   # config.vm.box = "base"
-  config.vm.box = "generic/debian10"
+  config.vm.box = "generic/ubuntu1604"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -64,12 +64,12 @@ Vagrant.configure("2") do |config|
         node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
         node.vm.network "forwarded_port", guest: 22, host: "#{2710 + i}"
 
-        node.vm.provision "setup-iptables", type: "shell", :path => "debian/switch-to-iptables-legacy.sh"
+        # node.vm.provision "setup-iptables", type: "shell", :path => "debian/switch-to-iptables-legacy.sh"
         node.vm.provision "setup-hosts", :type => "shell", :path => "debian/vagrant/setup-hosts.sh" do |s|
           s.args = ["eth1"]
         end
 
-        node.vm.provision "setup-dns", type: "shell", :path => "debian/update-dns.sh"
+        # node.vm.provision "setup-dns", type: "shell", :path => "debian/update-dns.sh"
         node.vm.provision "remove swap", type: "shell", :path => "debian/remove-swap.sh"
 
       end
@@ -83,14 +83,14 @@ Vagrant.configure("2") do |config|
     end
     node.vm.hostname = "loadbalancer"
     node.vm.network :private_network, ip: IP_NW + "#{LB_IP_START}"
-	node.vm.network "forwarded_port", guest: 22, host: 2730
+    node.vm.network "forwarded_port", guest: 22, host: 2730
 
-    node.vm.provision "setup-iptables", type: "shell", :path => "debian/switch-to-iptables-legacy.sh"
+    # node.vm.provision "setup-iptables", type: "shell", :path => "debian/switch-to-iptables-legacy.sh"
     node.vm.provision "setup-hosts", :type => "shell", :path => "debian/vagrant/setup-hosts.sh" do |s|
       s.args = ["eth1"]
     end
 
-    node.vm.provision "setup-dns", type: "shell", :path => "debian/update-dns.sh"
+    # node.vm.provision "setup-dns", type: "shell", :path => "debian/update-dns.sh"
     node.vm.provision "remove swap", type: "shell", :path => "debian/remove-swap.sh"
 
   end
@@ -104,14 +104,14 @@ Vagrant.configure("2") do |config|
         end
         node.vm.hostname = "worker-#{i}"
         node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
-		node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
+        node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
 
-        node.vm.provision "setup-iptables", type: "shell", :path => "debian/switch-to-iptables-legacy.sh"
+        # node.vm.provision "setup-iptables", type: "shell", :path => "debian/switch-to-iptables-legacy.sh"
         node.vm.provision "setup-hosts", :type => "shell", :path => "debian/vagrant/setup-hosts.sh" do |s|
           s.args = ["eth1"]
         end
 
-        node.vm.provision "setup-dns", type: "shell", :path => "debian/update-dns.sh"
+        # node.vm.provision "setup-dns", type: "shell", :path => "debian/update-dns.sh"
         node.vm.provision "install-docker", type: "shell", :path => "debian/install-docker.sh"
         node.vm.provision "allow-bridge-nf-traffic", :type => "shell", :path => "debian/allow-bridge-nf-traffic.sh"
         node.vm.provision "remove swap", type: "shell", :path => "debian/remove-swap.sh"
