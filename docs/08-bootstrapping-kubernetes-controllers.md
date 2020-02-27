@@ -20,10 +20,10 @@ Download the official Kubernetes release binaries:
 
 ```
 wget -q --show-progress --https-only --timestamping \
-  "https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/linux/amd64/kube-apiserver" \
-  "https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/linux/amd64/kube-controller-manager" \
-  "https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/linux/amd64/kube-scheduler" \
-  "https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/linux/amd64/kubectl"
+  "https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kube-apiserver" \
+  "https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kube-controller-manager" \
+  "https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kube-scheduler" \
+  "https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kubectl"
 ```
 
 Reference: https://kubernetes.io/docs/setup/release/#server-binaries
@@ -94,7 +94,7 @@ ExecStart=/usr/local/bin/kube-apiserver \\
   --kubelet-client-certificate=/var/lib/kubernetes/kube-apiserver.crt \\
   --kubelet-client-key=/var/lib/kubernetes/kube-apiserver.key \\
   --kubelet-https=true \\
-  --runtime-config=api/all \\
+  --runtime-config api/all=true \\
   --service-account-key-file=/var/lib/kubernetes/service-account.crt \\
   --service-cluster-ip-range=10.96.0.0/24 \\
   --service-node-port-range=30000-32767 \\
@@ -245,20 +245,15 @@ loadbalancer# sudo service haproxy restart
 Make a HTTP request for the Kubernetes version info:
 
 ```
-curl --cacert ca.crt https://192.168.5.30:6443/version
-```
-
-> output
-
-```
+$ curl --cacert ca.crt https://192.168.5.30:6443/version
 {
   "major": "1",
-  "minor": "16",
-  "gitVersion": "v1.16.3",
-  "gitCommit": "b3cbbae08ec52a7fc73d334838e18d17e8512749",
+  "minor": "17",
+  "gitVersion": "v1.17.3",
+  "gitCommit": "06ad960bfd03b39c8310aaf92d1e7c12ce618213",
   "gitTreeState": "clean",
-  "buildDate": "2019-11-13T11:13:49Z",
-  "goVersion": "go1.12.12",
+  "buildDate": "2020-02-11T18:07:13Z",
+  "goVersion": "go1.13.6",
   "compiler": "gc",
   "platform": "linux/amd64"
 }
