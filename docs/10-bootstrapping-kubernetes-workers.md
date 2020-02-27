@@ -157,7 +157,7 @@ authorization:
 clusterDomain: "cluster.local"
 clusterDNS:
   - "10.96.0.10"
-resolvConf: "/run/systemd/resolve/resolv.conf"
+resolvConf: "/run/resolvconf/resolv.conf"
 runtimeRequestTimeout: "15m"
 tlsCertFile: "/var/lib/kubelet/${HOSTNAME}.crt"
 tlsPrivateKeyFile: "/var/lib/kubelet/${HOSTNAME}.key"
