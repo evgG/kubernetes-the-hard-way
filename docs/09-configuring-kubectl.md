@@ -39,11 +39,11 @@ Check the health of the remote Kubernetes cluster:
 
 ```
 $ kubectl get componentstatuses 
-NAME                 AGE
-controller-manager   <unknown>
-scheduler            <unknown>
-etcd-1               <unknown>
-etcd-0               <unknown>
+NAME                 STATUS    MESSAGE             ERROR
+scheduler            Healthy   ok                  
+controller-manager   Healthy   ok                  
+etcd-1               Healthy   {"health":"true"}   
+etcd-0               Healthy   {"health":"true"}   
 ```
 
 Note: It is OK for the worker node to be in a `NotReady` state. Worker nodes will come into `Ready` state once networking is configured.
